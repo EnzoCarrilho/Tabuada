@@ -1,6 +1,8 @@
 package br.dev.enzo.tabuada.gui;
 
 import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -8,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+
+import br.dev.enzo.tabuada.model.Tabuada;
 
 public class TelaTabuada {
 
@@ -72,7 +76,10 @@ public class TelaTabuada {
 		buttonlimpar.setBounds(130, 140, 100, 30);
 		
 		listTabuada = new JList();
-		listTabuada.setBounds(20, 180, 200, 260);
+
+		
+		scrollTabuada = new JScrollPane(listTabuada);
+		scrollTabuada.setBounds(20, 190, 210, 350);
 		
 		
 		// Adcionando os componentes no Painel de conteúdo do JFrame
@@ -84,7 +91,33 @@ public class TelaTabuada {
 		container.add(textMinMultiplicador);
 		container.add(buttoncalcular);
 		container.add(buttonlimpar);
-		container.add(listTabuada);
+		container.add(scrollTabuada);
+		
+		// Adicionar ouvintes de ação aos botões
+		buttoncalcular.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				String multiplicando = textMultiplicando.getText();
+				String minMultiplicador = textMinMultiplicador.getText();
+				String maxMultiplicador = textMaxMultiplicador.getText();
+				
+				double multiplicandoDouble = Double.parseDouble(multiplicando);
+				double minDouble = Double.parseDouble(minMultiplicador);
+				double maxDouble = Double.parseDouble(maxMultiplicador);
+				
+			    Tabuada tabuada = new Tabuada();
+			    tabuada.setMultiplicando(multiplicandoDouble);
+			    tabuada.setMinimoMultiplicador(minDouble);
+			    tabuada.setMaximoMultiplicador(maxDouble);
+			    
+			    String[] tabuadaResult = tabuada.mostrarTabuada();
+			    listTabuada.setListData(tabuadaResult);
+			    
+			}
+		});
+		
 		
 		// Tornar a tela visível deve ser a última instrução.
 		tela.setVisible(true);
