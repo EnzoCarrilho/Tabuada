@@ -94,7 +94,7 @@ public class TelaTabuada {
 		container.add(scrollTabuada);
 		
 		// Adicionar ouvintes de ação aos botões
-		buttoncalcular.addActionListener(new ActionListener() {
+		buttoncalcular.addActionListener(new ActionListener() { 
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -118,26 +118,22 @@ public class TelaTabuada {
 			}
 		});
 		
+		buttonlimpar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				textMultiplicando.setText(null);
+				textMinMultiplicador.setText(null);
+				textMaxMultiplicador.setText(null);
+				listTabuada.setListData(new String[0]);
+				textMultiplicando.requestFocus();
+			}
+		});
+		
 		
 		// Tornar a tela visível deve ser a última instrução.
 		tela.setVisible(true);
 	}
-	
-	private void exibirTabuada() {
-		
-		
-	}
-	
-	private void limparTabuada() {
-		
-		
-	}
-	
-	
-	
-	
-	
-	
-	
 	
 }

@@ -14,7 +14,8 @@ public class Main {
 		
 		/*
 		// Vetores
-//		double[] notas = new double[4];
+//		
+///		double[] notas = new double[4];
 //		notas[0] = 7.7;
 //		notas[1] = 8.3;
 //		notas[2] = 8.1;
